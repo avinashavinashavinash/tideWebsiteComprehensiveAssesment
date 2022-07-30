@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="80b9ab60-81b0-4a23-8f7f-17736ce1e436" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="3c79b793-bc8a-4e04-be71-ee9f9d3b0e66" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://restcountries.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>https://restcountries.com</con:endpoint></con:endpoints><con:resource name="Pen" path="/v2/currency/pen" id="add3d517-4336-42c9-9ddd-d8bbeb383175"><con:settings/><con:parameters/><con:method name="Pen 1" id="27389997-2788-4083-b9fb-e4cc64a2d20b" method="GET"><con:settings/><con:parameters/><con:request name="Request 1" id="7620495d-78a5-436d-9f5d-56f3de27f3b1" mediaType="application/json"><con:settings/><con:endpoint>https://restcountries.com</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="84a1a05d-187e-4010-92d4-6b96b66fd922" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="254520f4-3b87-4f43-9d06-9853132045ce" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="GET CACS" id="1500e2f2-37b4-4ce3-a595-366ff31dbaa4"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="612da065-8db4-4c3d-b872-803d92a45321" name="GET CACS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>https://restcountries.com/v2/currency/pen</con:endpoint><con:request/><con:assertion type="GroovyScriptAssertion" id="72382cad-c507-4121-92cd-9d4d887b0c1f" name="Script Assertion"><con:configuration><scriptText>import groovy.json.JsonSlurper
+
+def text = messageExchange.response.responseContent
+
+def script = new JsonSlurper().parseText(text)
+
+assert ["South America"] == script.subregion
+
+assert ["Lima"] == script.capital</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="groovy" name="GET Groovy Script" id="0dbf41bf-d8f1-42df-b1af-6523ec577b0c"><con:settings/><con:config><script>//import the package or libery for Json 
+import groovy.json.JsonSlurper 
+
+//import the package or libery for EXCEL
+import jxl.*
+import jxl.write.*
+
+Workbook workbook = Workbook.getWorkbook(new File("D:\\Tide\\SoapUi\\soapui.xls"))
+
+Sheet sheet = workbook.getSheet(0)
+
+def getcurrencyname = sheet.getCell(1,1).getContents()
+
+def getStep = testRunner.testCase.getTestStepByName("GET CACS")
+
+getStep.setPropertyValue("Endpoint","https://restcountries.com/v2/currency/"+getcurrencyname)
+
+testRunner.runTestStepByName("GET CACS")
+
+//getStep.getPropertyValue("Response")
+
+testRunner.testCase.getTestStepByName("GET CACS").getPropertyValue("Response")
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
