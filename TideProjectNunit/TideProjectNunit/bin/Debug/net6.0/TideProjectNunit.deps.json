@@ -21,7 +21,8 @@
           "Selenium.WebDriver.GeckoDriver": "0.31.0.1",
           "Serilog": "2.11.0",
           "Serilog.Sinks.File": "5.0.0",
-          "coverlet.collector": "3.1.2"
+          "coverlet.collector": "3.1.2",
+          "log4net": "2.0.14"
         },
         "runtime": {
           "TideProjectNunit.dll": {}
@@ -116,6 +117,17 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "log4net/2.0.14": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/log4net.dll": {
+            "assemblyVersion": "2.0.14.0",
+            "fileVersion": "2.0.14.0"
           }
         }
       },
@@ -2510,6 +2522,13 @@
       "sha512": "sha512-7S0M4bwvaiNWkeNLBRzo/HoqaoubUlzZuLnvg1YKlCs7DVVz/2OFS5jWMKmbW/3aMjCG0xRdchGXqNkWbhPxnQ==",
       "path": "ikvm/8.2.1",
       "hashPath": "ikvm.8.2.1.nupkg.sha512"
+    },
+    "log4net/2.0.14": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KevyXUuhOyhx7l1jWwq6ZGVlRC2Aetg0qDp6rJpfSZGcDPKQDwfOE6yEuVkVf0kEP08NQqBDn/TQ/TJv4wgyhw==",
+      "path": "log4net/2.0.14",
+      "hashPath": "log4net.2.0.14.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.2.0": {
       "type": "package",

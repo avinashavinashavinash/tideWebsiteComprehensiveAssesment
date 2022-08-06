@@ -1,15 +1,13 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using System.IO;
+
+
+
 
 namespace SeleniumNUnitExtentReport.Config
     {
@@ -32,8 +30,11 @@ namespace SeleniumNUnitExtentReport.Config
             _extent = new ExtentReports ();
             _extent.AttachReporter (htmlReporter);
             _extent.AddSystemInfo ("Host Name", "LocalHost");
-            _extent.AddSystemInfo ("Environment", "QA");
-            _extent.AddSystemInfo ("UserName", "TestUser");
+            _extent.AddSystemInfo ("Browser", "FireFox");
+            _extent.AddSystemInfo ("UserName", "Avinash");
+
+
+          
             }
 
         [OneTimeTearDown]
@@ -45,8 +46,15 @@ namespace SeleniumNUnitExtentReport.Config
         [SetUp]
         public void BeforeTest()
             {
-            //FirefoxDriverService service = FirefoxDriverService.CreateDefaultService ();
-            driver = new FirefoxDriver ();
+
+
+            FirefoxOptions firefoxOptions = new FirefoxOptions ();
+            firefoxOptions.AddArguments ("-private-window");
+
+            driver = new FirefoxDriver (firefoxOptions);
+
+
+            
             driver.Manage ().Timeouts ().ImplicitWait = TimeSpan.FromSeconds (60);
             driver.Manage ().Window.Maximize ();
             _test = _extent.CreateTest (TestContext.CurrentContext.Test.Name);
@@ -57,13 +65,10 @@ namespace SeleniumNUnitExtentReport.Config
         public void AfterTest()
             {
             var status = TestContext.CurrentContext.Result.Outcome.Status;
-            Console.WriteLine ("userlog",TestContext.CurrentContext.Result.StackTrace);
-            //var stacktrace = string.IsNullOrEmpty (TestContext.CurrentContext.Result.StackTrace) ? "" : string.Format ("{ 0}", TestContext.CurrentContext.Result.StackTrace);
-            Status logstatus;
+           
             switch(status)
                 {
                 case TestStatus.Failed:
-                    logstatus = Status.Fail;
                     DateTime time = DateTime.Now;
                     String fileName = "Screenshot_" +time.ToString ("h_mm_ss") + ".png";
                     String screenShotPath = Capture (driver, fileName);
@@ -71,16 +76,13 @@ namespace SeleniumNUnitExtentReport.Config
                     _test.Log (Status.Fail, "Snapshot below: " +_test.AddScreenCaptureFromPath ("Screenshots\\" +fileName));
                     break;
                 case TestStatus.Inconclusive:
-                    logstatus = Status.Warning;
                     break;
                 case TestStatus.Skipped:
-                    logstatus = Status.Skip;
                     break;
                 default:
-                    logstatus = Status.Pass;
                     break;
                 }
-            //_test.Log (logstatus, "Test ended with " +logstatus + stacktrace);
+            
             _extent.Flush ();
             driver.Quit ();
             }

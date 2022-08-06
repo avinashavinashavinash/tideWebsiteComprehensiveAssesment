@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "2GI0rBxE+IimukTtvyhlJ+nbmJSN+NzzmyQp1sA4/tzYWkAcV5+4olwHgpmKOAEK2WSz1jwv7mXypGcIBSB1ZQ==",
+  "dgSpecHash": "1ND33KOvEg9RrDNdNPR6xUvWXT+Gq3zuUPWjOUw0TD9WwaxAnAOV7h+EitiFjV2B/NJ74fkuLKA7GjGImgc7bw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Avinash\\source\\repos\\TideProjectNunit\\TideProjectNunit\\TideProjectNunit.csproj",
+  "projectFilePath": "D:\\m1089021_May C1_SDET_CSHARP Comprehensive_ Assessment\\TideProjectNunit\\TideProjectNunit\\TideProjectNunit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Avinash\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\extentreports\\4.1.0\\extentreports.4.1.0.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\ikvm\\8.2.1\\ikvm.8.2.1.nupkg.sha512",
+    "C:\\Users\\Avinash\\.nuget\\packages\\log4net\\2.0.14\\log4net.2.0.14.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Avinash\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
